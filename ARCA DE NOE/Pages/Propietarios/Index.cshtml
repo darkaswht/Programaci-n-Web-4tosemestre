@@ -1,0 +1,85 @@
+@page
+@model ARCA_DE_NOE.Pages.Propietarios.IndexModel
+@{
+    ViewData["Title"] = "Propietarios";
+}
+
+<div class="d-flex align-items-start justify-content-between mb-4 flex-wrap gap-2">
+    <div class="section-header">
+        <h2 class="fw-bold mb-0" style="font-size:1.5rem;">Propietarios</h2>
+        <p class="text-muted mb-0 mt-1" style="font-size:.85rem;">Dueños registrados en la clínica</p>
+    </div>
+    <a asp-page="Crear" class="btn btn-arca px-4 py-2">
+        <i class="bi bi-plus-lg me-1"></i>Nuevo propietario
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm rounded-3">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table tabla-arca align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th class="ps-4 py-3">Propietario</th>
+                        <th>Teléfono</th>
+                        <th>Correo electrónico</th>
+                        <th>Estado</th>
+                        <th class="text-end pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.Propietarios)
+                    {
+                        <tr>
+                            <td class="ps-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="avatar-iniciales">
+                                        @p.Nombre[0]@p.Apellidos[0]
+                                    </div>
+                                    <div>
+                                        <div class="fw-semibold" style="font-size:.93rem;">@p.Nombre @p.Apellidos</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted" style="font-size:.88rem;">
+                                <i class="bi bi-telephone me-1"></i>@p.Telefono
+                            </td>
+                            <td class="text-muted" style="font-size:.88rem;">
+                                <i class="bi bi-envelope me-1"></i>@p.Email
+                            </td>
+                            <td>
+                                @if (p.Activo)
+                                {
+                                    <span class="badge badge-activo rounded-pill px-3 py-1">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-inactivo rounded-pill px-3 py-1">Inactivo</span>
+                                }
+                            </td>
+                            <td class="text-end pe-4">
+                                <a asp-page="Editar" asp-route-id="@p.Id"
+                                   class="btn btn-sm btn-arca-outline me-1" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-page="Eliminar" asp-route-id="@p.Id"
+                                   class="btn btn-sm btn-outline-danger" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Propietarios.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                <i class="bi bi-people fs-2 d-block mb-2 opacity-50"></i>
+                                No hay propietarios registrados todavía.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
