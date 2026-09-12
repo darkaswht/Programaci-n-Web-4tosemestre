@@ -1,0 +1,76 @@
+@page "{id:int}"
+@model ARCA_DE_NOE.Pages.Mascotas.EditarModel
+@{
+    ViewData["Title"] = "Editar mascota";
+}
+
+<div class="mb-4">
+    <a asp-page="Index" class="text-decoration-none text-muted" style="font-size:.85rem;">
+        <i class="bi bi-arrow-left me-1"></i>Volver a mascotas
+    </a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="form-card">
+            <div class="card-header-arca d-flex align-items-center gap-2">
+                <i class="bi bi-pencil-square" style="color:var(--azul);font-size:1.1rem;"></i>
+                <span class="fw-semibold" style="color:var(--azul);">Editar mascota</span>
+            </div>
+            <div class="p-4">
+                <form method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" asp-for="Mascota.Nombre"
+                                   maxlength="100" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Propietario</label>
+                            <select class="form-select" asp-for="Mascota.NombrePropietario">
+                                <option>Ana García</option>
+                                <option>Carlos Mendoza</option>
+                                <option>Laura Torres</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Especie</label>
+                            <select class="form-select" asp-for="Mascota.Especie">
+                                <option>Perro</option>
+                                <option>Gato</option>
+                                <option>Ave</option>
+                                <option>Conejo</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Raza</label>
+                            <input type="text" class="form-control" asp-for="Mascota.Raza" maxlength="100" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Color</label>
+                            <input type="text" class="form-control" asp-for="Mascota.Color" maxlength="80" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" asp-for="Mascota.FechaNacimiento" />
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check form-switch mt-1">
+                                <input class="form-check-input" type="checkbox" asp-for="Mascota.Activo" />
+                                <label class="form-check-label" style="font-size:.9rem;">Mascota activa</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a asp-page="Index" class="btn btn-outline-secondary px-4">Cancelar</a>
+                        <button type="submit" class="btn btn-arca px-4">
+                            <i class="bi bi-check2 me-1"></i>Guardar cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
