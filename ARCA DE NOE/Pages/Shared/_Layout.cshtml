@@ -3,62 +3,79 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ARCA_DE_NOE</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] — Veterinaria Arca de Noé</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ARCA_DE_NOE.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ARCA_DE_NOE</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Propietarios/Index">Propietarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Mascotas/Index">Mascotas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Veterinarios/Index">Veterinarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Citas/Index">Citas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+
+<nav class="navbar navbar-expand-lg navbar-arca">
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <!-- Logo + nombre -->
+        <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index">
+            <div style="width:34px;height:34px;background:#E8192C;border-radius:6px;
+                        display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="bi bi-heart-pulse-fill text-white" style="font-size:1rem;"></i>
+            </div>
+            <span>Arca de Noé</span>
+        </a>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - ARCA_DE_NOE - <a asp-area="" asp-page="/Privacy">Privacidad</a>
+        <button class="navbar-toggler border-0" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navMain">
+            <i class="bi bi-list text-white fs-4"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMain">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1 mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Index">
+                        <i class="bi bi-house me-1"></i>Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Propietarios/Index">
+                        <i class="bi bi-people me-1"></i>Propietarios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Mascotas/Index">
+                        <i class="bi bi-paw me-1"></i>Mascotas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Veterinarios/Index">
+                        <i class="bi bi-person-badge me-1"></i>Veterinarios
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <a class="nav-link px-3 py-1 rounded-pill text-white fw-semibold"
+                       asp-page="/Citas/Index"
+                       style="background:var(--rojo);font-size:0.88rem;">
+                        <i class="bi bi-calendar-check me-1"></i>Citas
+                    </a>
+                </li>
+            </ul>
         </div>
-    </footer>
+    </div>
+</nav>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<div class="container my-4">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
 
-    @await RenderSectionAsync("Scripts", required: false)
+<footer class="footer-arca">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <span><i class="bi bi-heart-fill me-1" style="color:var(--rojo);"></i>Veterinaria Arca de Noé &copy; 2026</span>
+        <span class="d-none d-md-inline">Cuidando a tus mascotas con amor</span>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

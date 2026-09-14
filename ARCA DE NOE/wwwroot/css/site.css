@@ -1,31 +1,268 @@
-html {
-  font-size: 14px;
+/* ============================================================
+   ARCA DE NOE — Estilos principales
+   Paleta del logo: rojo #E8192C, azul marino #1B2B6B,
+   beige #C4A882, amarillo #F5C518
+   ============================================================ */
+
+:root {
+    --rojo:      #E8192C;
+    --rojo-osc:  #C4111E;
+    --azul:      #1B2B6B;
+    --azul-med:  #2A3F9D;
+    --beige:     #C4A882;
+    --beige-cl:  #F5EFE6;
+    --amarillo:  #F5C518;
+    --gris-bg:   #F7F7F9;
+    --texto:     #2C2C2C;
+    --muted:     #6B7280;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* Base */
+html { font-size: 15px; }
+@media (min-width: 768px) { html { font-size: 16px; } }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--gris-bg);
+    color: var(--texto);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin-bottom: 0;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* ── Navbar ─────────────────────────────────────── */
+.navbar-arca {
+    background-color: var(--azul);
+    border-bottom: 3px solid var(--rojo);
+    padding: 0.6rem 0;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-arca .navbar-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff !important;
+    letter-spacing: 0.5px;
 }
+
+.navbar-arca .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem !important;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+}
+
+.navbar-arca .nav-link:hover,
+.navbar-arca .nav-link.active {
+    background: rgba(255,255,255,0.12);
+    color: #fff !important;
+}
+
+.navbar-arca .nav-link.active {
+    border-bottom: 2px solid var(--amarillo);
+}
+
+/* ── Hero / Banner ──────────────────────────────── */
+.hero-banner {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%);
+    border-radius: 12px;
+    color: #fff;
+    padding: 2.5rem 2rem;
+    border-left: 5px solid var(--rojo);
+}
+
+/* ── Tarjetas del dashboard ─────────────────────── */
+.dash-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e8e8ee;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.dash-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(27, 43, 107, 0.12);
+}
+
+.dash-card .icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* ── Cabecera de sección ────────────────────────── */
+.section-header {
+    border-left: 4px solid var(--rojo);
+    padding-left: 0.85rem;
+}
+
+/* ── Tabla ──────────────────────────────────────── */
+.tabla-arca thead th {
+    background-color: var(--beige-cl);
+    color: var(--azul);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid var(--beige);
+}
+
+.tabla-arca tbody tr:hover {
+    background-color: #f0f2ff;
+}
+
+/* ── Avatar de iniciales ────────────────────────── */
+.avatar-iniciales {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--azul);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ── Badges de estado ───────────────────────────── */
+.badge-activo {
+    background: #E6F4EA;
+    color: #1A7A3A;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badge-inactivo {
+    background: #FDECEA;
+    color: var(--rojo-osc);
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badge-pendiente {
+    background: #FFF8E1;
+    color: #B45309;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badge-completada {
+    background: #E6F4EA;
+    color: #1A7A3A;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badge-cancelada {
+    background: #FDECEA;
+    color: var(--rojo-osc);
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+/* ── Botones ────────────────────────────────────── */
+.btn-arca {
+    background-color: var(--rojo);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.btn-arca:hover {
+    background-color: var(--rojo-osc);
+    color: #fff;
+}
+
+.btn-arca-outline {
+    border: 1.5px solid var(--azul);
+    color: var(--azul);
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-arca-outline:hover {
+    background: var(--azul);
+    color: #fff;
+}
+
+/* ── Card de formulario ─────────────────────────── */
+.form-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e8e8ee;
+}
+
+.form-card .card-header-arca {
+    background: var(--beige-cl);
+    border-bottom: 1px solid #e2d9cc;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem 1.4rem;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1.5px solid #D1D5DB;
+    font-size: 0.93rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-med);
+    box-shadow: 0 0 0 3px rgba(27,43,107,0.1);
+}
+
+.form-label {
+    color: var(--azul);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+/* ── Card de veterinario ────────────────────────── */
+.vet-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e8e8ee;
+    transition: box-shadow 0.18s;
+}
+
+.vet-card:hover {
+    box-shadow: 0 4px 16px rgba(27, 43, 107, 0.1);
+}
+
+.vet-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Confirm delete ─────────────────────────────── */
+.delete-icon-wrap {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: #FDECEA;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Footer ─────────────────────────────────────── */
+.footer-arca {
+    background: var(--azul);
+    border-top: 3px solid var(--rojo);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.82rem;
+    padding: 0.9rem 0;
+    margin-top: 3rem;
+}
+
+/* ── Misc ────────────────────────────────────────── */
+.text-azul   { color: var(--azul); }
+.text-rojo   { color: var(--rojo); }
+.text-beige  { color: var(--beige); }
+.bg-beige-cl { background-color: var(--beige-cl); }
