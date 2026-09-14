@@ -11,7 +11,6 @@ namespace ARCA_DE_NOE.Pages.Mascotas
 
         public void OnGet(int id)
         {
-            // TODO: cargar desde base de datos
             Mascota = new Mascota
             {
                 Id = id, Nombre = "Rocky", NombrePropietario = "Ana García",
@@ -23,7 +22,6 @@ namespace ARCA_DE_NOE.Pages.Mascotas
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            // TODO: actualizar en base de datos
             return RedirectToPage("Index");
         }
     }

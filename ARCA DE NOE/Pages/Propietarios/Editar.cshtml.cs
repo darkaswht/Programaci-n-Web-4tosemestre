@@ -11,7 +11,6 @@ namespace ARCA_DE_NOE.Pages.Propietarios
 
         public void OnGet(int id)
         {
-            // TODO: cargar desde base de datos por id
             Propietario = new Propietario
             {
                 Id = id, Nombre = "Ana", Apellidos = "García López",
@@ -22,7 +21,6 @@ namespace ARCA_DE_NOE.Pages.Propietarios
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            // TODO: actualizar en base de datos
             return RedirectToPage("Index");
         }
     }

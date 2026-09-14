@@ -11,7 +11,6 @@ namespace ARCA_DE_NOE.Pages.Citas
 
         public void OnGet(int id)
         {
-            // TODO: cargar desde base de datos
             Cita = new Cita
             {
                 Id = id, NombreMascota = "Rocky", NombreVeterinario = "María Sánchez",
@@ -23,7 +22,6 @@ namespace ARCA_DE_NOE.Pages.Citas
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            // TODO: actualizar en base de datos
             return RedirectToPage("Index");
         }
     }

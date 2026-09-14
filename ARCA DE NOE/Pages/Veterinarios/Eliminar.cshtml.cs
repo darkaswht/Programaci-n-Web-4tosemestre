@@ -10,13 +10,11 @@ namespace ARCA_DE_NOE.Pages.Veterinarios
 
         public void OnGet(int id)
         {
-            // TODO: cargar desde base de datos
             Veterinario = new Veterinario { Id = id, Nombre = "María", Apellidos = "Sánchez Ramos" };
         }
 
         public IActionResult OnPost(int id)
         {
-            // TODO: eliminar de base de datos
             return RedirectToPage("Index");
         }
     }

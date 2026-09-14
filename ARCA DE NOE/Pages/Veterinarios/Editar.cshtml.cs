@@ -11,7 +11,6 @@ namespace ARCA_DE_NOE.Pages.Veterinarios
 
         public void OnGet(int id)
         {
-            // TODO: cargar desde base de datos
             Veterinario = new Veterinario
             {
                 Id = id, Nombre = "María", Apellidos = "Sánchez Ramos",
@@ -22,7 +21,6 @@ namespace ARCA_DE_NOE.Pages.Veterinarios
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            // TODO: actualizar en base de datos
             return RedirectToPage("Index");
         }
     }
