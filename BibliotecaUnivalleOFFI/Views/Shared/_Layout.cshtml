@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Biblioteca Univalle</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body { background-color: #f5f5f5; }
+        .navbar { background-color: #8B0033 !important; }
+        .navbar-brand, .nav-link { color: #fff !important; }
+        .nav-link:hover { color: #f0c0cc !important; }
+        .sidebar { background-color: #8B0033; min-height: calc(100vh - 56px); padding-top: 20px; }
+        .sidebar a { color: #fff; display: block; padding: 10px 20px; text-decoration: none; }
+        .sidebar a:hover { background-color: #6a0026; color: #fff; }
+        .sidebar a.active { background-color: #6a0026; }
+        .main-content { padding: 30px; }
+        .card { border: none; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .card-header { background-color: #8B0033; color: #fff; }
+        .btn-primary { background-color: #8B0033; border-color: #8B0033; }
+        .btn-primary:hover { background-color: #6a0026; border-color: #6a0026; }
+        .table thead { background-color: #8B0033; color: #fff; }
+        footer { background-color: #8B0033; color: #fff; padding: 15px 0; margin-top: auto; }
+        .badge-rol { background-color: #8B0033; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">Biblioteca Univalle</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                @if (Context.Session.GetString("UsuarioNombre") != null)
+                {
+                    <span class="text-white">@Context.Session.GetString("UsuarioNombre")</span>
+                    <span class="badge-rol">@Context.Session.GetString("UsuarioRol")</span>
+                    <a class="nav-link" asp-controller="Acceso" asp-action="Logout">Salir</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        @if (Context.Session.GetString("UsuarioRol") == "Administrador")
+        {
+            <div class="sidebar" style="width:200px;">
+                <a asp-controller="Administrador" asp-action="Index">Dashboard</a>
+                <a asp-controller="Administrador" asp-action="Libros">Libros</a>
+                <a asp-controller="Administrador" asp-action="Usuarios">Usuarios</a>
+                <a asp-controller="Administrador" asp-action="Prestamos">Prestamos</a>
+            </div>
+        }
+        else if (Context.Session.GetString("UsuarioRol") == "Bibliotecario")
+        {
+            <div class="sidebar" style="width:200px;">
+                <a asp-controller="Bibliotecario" asp-action="Index">Dashboard</a>
+                <a asp-controller="Bibliotecario" asp-action="Libros">Libros</a>
+                <a asp-controller="Bibliotecario" asp-action="Prestamos">Prestamos</a>
+            </div>
+        }
+        else if (Context.Session.GetString("UsuarioRol") == "Usuario")
+        {
+            <div class="sidebar" style="width:200px;">
+                <a asp-controller="UsuarioDashboard" asp-action="Index">Dashboard</a>
+                <a asp-controller="UsuarioDashboard" asp-action="Catalogo">Catalogo</a>
+                <a asp-controller="UsuarioDashboard" asp-action="MisPrestamos">Mis Prestamos</a>
+            </div>
+        }
+
+        <div class="main-content flex-grow-1">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <span>Universidad Privada del Valle - Sede Sucre &copy; 2026</span>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Prestamos";
+}
+
+<h4 class="mb-4">Prestamos</h4>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead>
+        <tr>
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Fecha Prestamo</th>
+            <th>Fecha Devolucion</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in ViewBag.Prestamos)
+        {
+            <tr>
+                <td>@p.LibroTitulo</td>
+                <td>@p.UsuarioNombre</td>
+                <td>@p.FechaPrestamo.ToString("dd/MM/yyyy")</td>
+                <td>@(p.FechaDevolucion != null ? p.FechaDevolucion.Value.ToString("dd/MM/yyyy") : "-")</td>
+                <td>@p.Estado</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+@using BibliotecaUnivalleOFFI.Models
+@model IEnumerable<Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h4 class="mb-4">Usuarios</h4>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Correo</td>
+                <td>@usuario.Rol</td>
+            </tr>
+        }
+    </tbody>
+</table>

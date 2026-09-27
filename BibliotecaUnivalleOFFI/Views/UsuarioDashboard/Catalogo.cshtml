@@ -1,0 +1,30 @@
+@using BibliotecaUnivalleOFFI.Models
+@model IEnumerable<Libro>
+
+@{
+    ViewData["Title"] = "Catalogo";
+}
+
+<h4 class="mb-4">Catalogo de Libros</h4>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>ISBN</th>
+            <th>Disponible</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var libro in Model)
+        {
+            <tr>
+                <td>@libro.Titulo</td>
+                <td>@libro.Autor</td>
+                <td>@libro.ISBN</td>
+                <td>@(libro.Disponible ? "Si" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>

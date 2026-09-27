@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h4 class="mb-4">Bienvenido, @Context.Session.GetString("UsuarioNombre")</h4>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-header">Catalogo de Libros</div>
+            <div class="card-body">
+                <a asp-controller="UsuarioDashboard" asp-action="Catalogo" class="btn btn-primary">Ver Catalogo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-header">Mis Prestamos</div>
+            <div class="card-body">
+                <a asp-controller="UsuarioDashboard" asp-action="MisPrestamos" class="btn btn-primary">Ver Prestamos</a>
+            </div>
+        </div>
+    </div>
+</div>

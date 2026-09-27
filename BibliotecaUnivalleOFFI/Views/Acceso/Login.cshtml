@@ -1,0 +1,46 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "Iniciar Sesion";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesion - Biblioteca Univalle</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body { background-color: #8B0033; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .login-card { background: #fff; border-radius: 8px; padding: 40px; width: 100%; max-width: 380px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .login-card h2 { color: #8B0033; text-align: center; margin-bottom: 5px; }
+        .login-card p { color: #888; text-align: center; margin-bottom: 25px; font-size: 0.9em; }
+        .btn-login { background-color: #8B0033; border-color: #8B0033; width: 100%; color: #fff; }
+        .btn-login:hover { background-color: #6a0026; border-color: #6a0026; color: #fff; }
+        .form-control:focus { border-color: #8B0033; box-shadow: 0 0 0 0.2rem rgba(139,0,51,0.25); }
+        label { color: #555; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Biblioteca Univalle</h2>
+        <p>Universidad Privada del Valle</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger py-2">@ViewBag.Error</div>
+        }
+
+        <form method="post" asp-action="Login" asp-controller="Acceso">
+            <div class="mb-3">
+                <label>Correo</label>
+                <input type="email" name="correo" class="form-control" required />
+            </div>
+            <div class="mb-4">
+                <label>Contrasena</label>
+                <input type="password" name="contrasena" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-login">Ingresar</button>
+        </form>
+    </div>
+</body>
+</html>
